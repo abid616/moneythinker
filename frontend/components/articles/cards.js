@@ -8,9 +8,9 @@ export const HeroCard = ({article}) => {
         <Link as={`/article/${article.slug}`} href="/article/[id]">
             <a>
                 <div className="object-cover card border-2 md:p-4 md:rounded">
-                    {/* Image */}
+                    {/* Image article.image.width*/}
                     <div>
-                        <Images image={article.image} width={article.image.width} height={article.image.height} />
+                        <Images image={article.image} width={400} height={500} />
                     </div>
 
                     {/* discription */}
