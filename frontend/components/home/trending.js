@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import {TrendingItem} from './trendingItem';
 
-const Trending = ({}) => {
+const Trending = ({articles}) => {
+	const [showarticles, setShowarticles] = useState([])
+
+  useEffect(() => {
+      if(articles.length > 4) {
+          setShowarticles(articles.slice(0, 4))
+      } else {
+          setShowarticles(articles)
+      }
+  }, [articles])
+
 	return (
 		<div className="sm:p-0 md:px-24 md:mt-16 mt-trending">
 			<div className="sm:flex">
@@ -47,67 +58,12 @@ const Trending = ({}) => {
 				</div>
 				<div className="sm:w-6/12 md:w-4/12 z-10 pl-4">
 					<p className="font-sans text-xl md:mt-12">Conspiracy</p>
-					<div className="bg-white sm:p-4 mt-8">
-						<div>
-							<div className="flex">
-								<div className="w-8/12 flex flex-col">
-									<p className="text-sm text-blue-400">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
-									<p className="text-sm text-blue-400 mt-4">1h ago</p>
-								</div>
-								<div className="w-4/12 flex justify-around">
-									<div className="h-20 w-20 bg-blue-400">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="mt-8">
-							<div className="flex">
-								<div className="w-8/12 flex flex-col">
-									<p className="text-sm text-blue-400">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
-									<p className="text-sm text-blue-400 mt-4">1h ago</p>
-								</div>
-								<div className="w-4/12 flex justify-around">
-									<div className="h-20 w-20 bg-blue-400">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="mt-8">
-							<div className="flex">
-								<div className="w-8/12 flex flex-col">
-									<p className="text-sm text-blue-400">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
-									<p className="text-sm text-blue-400 mt-4">1h ago</p>
-								</div>
-								<div className="w-4/12 flex justify-around">
-									<div className="h-20 w-20 bg-blue-400">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="mt-8 hidden md:block">
-							<div className="flex">
-								<div className="w-8/12 flex flex-col">
-									<p className="text-sm text-blue-400">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
-									<p className="text-sm text-blue-400 mt-4">1h ago</p>
-								</div>
-								<div className="w-4/12 flex justify-around">
-									<div className="h-20 w-20 bg-blue-400">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="mt-8 hidden md:block">
-							<div className="flex">
-								<div className="w-8/12 flex flex-col">
-									<p className="text-sm text-blue-400">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
-									<p className="text-sm text-blue-400 mt-4">1h ago</p>
-								</div>
-								<div className="w-4/12 flex justify-around">
-									<div className="h-20 w-20 bg-blue-400">
-									</div>
-								</div>
-							</div>
-						</div>
+					<div className="bg-white sm:p-4">
+						{
+							showarticles.map((item, i) => (
+								<TrendingItem article={item} key={i} num={i} />
+							))
+						}
 					</div>
 				</div>
 			</div>
