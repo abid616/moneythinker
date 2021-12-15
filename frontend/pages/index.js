@@ -8,11 +8,17 @@ import Hero from '../components/home/hero'
 import Trending from '../components/home/trending'
 
 const Home = ({ articles, categories, homepage, tags}) => {
+console.log(categories)
   return (
     <Container categories={categories}>
       <Seo seo={homepage.seo}/>
       <Hero />
-      <Posts title='Trading && investment' articles={articles} categories={categories}/>      
+      <Trending articles={articles} />
+      {
+        categories.map((item, i) => (
+          item.articles.length > 0 ? (<Posts key={i} title={item.name} articles={item.articles}/>) : null
+        ))
+      }
     </Container>
   )
 }
