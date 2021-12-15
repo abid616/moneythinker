@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import Images from "../image"
 import Link from "next/link"
 import {smartTrim} from "../../lib/blog"
+import Moment from "react-moment";
 
 export const HeroCard = ({article}) => {
     return (
@@ -14,11 +15,15 @@ export const HeroCard = ({article}) => {
                     </div>
 
                     {/* discription */}
-                    <div className="card-body m-auto">
+                    <div className="card-body m-auto p-2 w-full">
                         <h2 className="text-md card-title h-14 overflow-hidden">{article.title}</h2>
-                        <p className="text-sm h-10 md:h-24 sm:h-16 overflow-hidden">{article.description}</p>
+                        <p className="text-sm h-10 sm:h-16 overflow-hidden">{article.description}</p>
+                        <div className="flex justify-between mt-2 items-center">
+                            <h2 className="text-lg font-semibold">By {article.author.name}</h2>
+                            <Moment format="MMM Do YYYY">{article.published_at}</Moment>
+                        </div>
                     </div>
-                </div>                
+                </div>
             </a>
         </Link>
     )

@@ -8,11 +8,10 @@ import Hero from '../components/home/hero'
 import Trending from '../components/home/trending'
 
 const Home = ({ articles, categories, homepage, tags}) => {
-console.log(categories)
   return (
     <Container categories={categories}>
       <Seo seo={homepage.seo}/>
-      <Hero />
+      <Hero articles={articles} />
       <Trending articles={articles} />
       {
         categories.map((item, i) => (
