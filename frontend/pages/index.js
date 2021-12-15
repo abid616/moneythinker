@@ -12,11 +12,7 @@ const Home = ({ articles, categories, homepage, tags}) => {
     <Container categories={categories}>
       <Seo seo={homepage.seo}/>
       <Hero />
-      <Trending />
-      <Posts title='Trading && investment' articles={articles} categories={categories}/>
-      <Posts title='Reviews' articles={articles} categories={categories}/>
-      <Posts title='UK legal' articles={articles} categories={categories}/>
-      
+      <Posts title='Trading && investment' articles={articles} categories={categories}/>      
     </Container>
   )
 }
