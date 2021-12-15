@@ -9,9 +9,10 @@ const Images = ({ image, style, width, height, className }) => {
         <Image
             src={imageUrl}
             alt={image.alternativeText || image.name}
-            width={width}
-            height={height}
+            width={1080}
+            height={810}
             layout="intrinsic"
+            objectFit="cover"
             loading="lazy"
             style={style}
             className={className}
