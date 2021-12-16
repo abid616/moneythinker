@@ -37,3 +37,7 @@
 .slide img{
 	width: 100% !important;
 }
+
+.text-ellipsis {
+	text-overflow: ellipsis;
+}
