@@ -64,7 +64,7 @@ const Article = ({ article, categories }) => {
 
           <div>
             <div className="mt-4">
-              <Images image={article.image} width={article.image.width} height={900}/>
+              <Images image={article.image} />
             </div>
             <p className="mt-4 text-center text-gray-400">{article.description}</p>
           </div>
