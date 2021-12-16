@@ -14,7 +14,7 @@ const Home = ({ articles, categories, homepage, tags}) => {
       <Hero articles={articles} />
       <Trending articles={articles} />
       {
-        categories.map((item, i) => (
+        categories.filter(ca => ca.name !== 'Consparacy').map((item, i) => (
           item.articles.length > 0 ? (
             <Posts key={i} title={item.name} articles={articles.filter(ar => ar.category.id === item.id)}/>
           ) : null
