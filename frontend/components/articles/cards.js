@@ -12,7 +12,7 @@ export const HeroCard = ({article}) => {
                 <div className="object-cover card border-2 md:p-4 md:rounded h-full">
                     {/* Image article.image.width*/}
                     <div>
-                        {article.image ? <Images image={article.image} width={400} height={500} /> : null}
+                        {article.image ? <Images image={article.image} width={400} height={350} /> : null}
                     </div>
 
                     {/* discription */}
