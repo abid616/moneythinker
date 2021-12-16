@@ -37,3 +37,13 @@
 .slide img{
 	width: 100% !important;
 }
+
+.text-ellipsis {
+	text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 768px) {
+	.text-ellipsis {
+		text-overflow: none;
+	}
+}
