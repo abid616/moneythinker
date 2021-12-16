@@ -8,7 +8,12 @@ import Hero from '../components/home/hero'
 import Trending from '../components/home/trending'
 
 const Home = ({ articles, categories, homepage, tags}) => {
+
   console.log(articles)
+
+    
+console.log('articles', articles)
+console.log('categories', categories)
   return (
     <Container categories={categories}>
       <Seo seo={homepage.seo}/>
