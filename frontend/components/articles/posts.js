@@ -16,7 +16,7 @@ export const Posts = ({ title, articles}) => {
         <div className='mt-8'>
             <div>
                 <div className="card-title sm:p-0 px-2 capitalize">{title}</div>
-                <div className="grid sm:grid-cols-4 grid-cols-2 gap-4 sm:p-0 px-2">
+                <div className="grid sm:grid-cols-4 grid-cols-2 gap-4 sm:gap-8 sm:px-0 px-2">
                     {latestPosts.map((article) => {
                         return (
                             <HeroCard article={article} key={`article__${article.slug}`} />

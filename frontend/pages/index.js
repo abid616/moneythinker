@@ -8,19 +8,13 @@ import Hero from '../components/home/hero'
 import Trending from '../components/home/trending'
 
 const Home = ({ articles, categories, homepage, tags}) => {
-
-  console.log(articles)
-
-    
-console.log('articles', articles)
-console.log('categories', categories)
   return (
     <Container categories={categories}>
       <Seo seo={homepage.seo}/>
       <Hero articles={articles} />
       <Trending articles={articles} />
       {
-        categories.map((item, i) => (
+        categories.filter(ca => ca.name !== 'Consparacy').map((item, i) => (
           item.articles.length > 0 ? (
             <Posts key={i} title={item.name} articles={articles.filter(ar => ar.category.id === item.id)}/>
           ) : null
