@@ -21,6 +21,7 @@ export const HeroCard = ({article}) => {
                         <div className="flex flex-col sm:flex-row justify-between mt-1 sm:mt-2 items-center">
                             <h2 className="text-sm md:text-lg font-semibold">By {article.author.name}</h2>
                             <p className="text-sm md:text-lg sm:mt-0 mt-1"><Moment format="MMM Do YYYY">{article.published_at}</Moment></p>
+
                         </div>
                     </div>
                 </div>

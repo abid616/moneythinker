@@ -30,6 +30,7 @@ export async function getStaticProps() {
     fetchAPI("/articles"),
     fetchAPI("/categories"),
     fetchAPI("/tags"),
+    fetchAPI("/requests"),
     fetchAPI("/homepage"),
   ]);
 
