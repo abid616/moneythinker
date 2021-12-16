@@ -5,7 +5,6 @@ import {smartTrim} from "../../lib/blog"
 import Moment from "react-moment";
 
 export const HeroCard = ({article}) => {
-    console.log(article)
     return (
         <Link as={`/article/${article.slug}`} href="/article/[id]">
             <a>
@@ -20,7 +19,7 @@ export const HeroCard = ({article}) => {
                         <h2 className="text-md card-title h-14 overflow-hidden">{article.title}</h2>
                         <p className="text-sm h-10 sm:h-16 overflow-hidden">{article.description}</p>
                         <div className="flex justify-between mt-2 items-center">
-                            <h2 className="text-lg font-semibold">By {}</h2>
+                            <h2 className="text-lg font-semibold">By {article.author.name}</h2>
                             <Moment format="MMM Do YYYY">{article.published_at}</Moment>
                         </div>
                     </div>

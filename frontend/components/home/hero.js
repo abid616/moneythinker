@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Form } from './form'
 
 const Hero = ({}) => {
 	return (        
@@ -13,26 +14,15 @@ const Hero = ({}) => {
 						<div>
 							<p className="font-sans text-pink-600 sm:text-lg text-sm">Compare business energy prices</p>
 							<p className="font-sans text-pink-600 text-sm sm:pt-4 pt-2">See how much you could save in 60 seconds!</p>
-							<div className="w-full max-w-xs">
-							  <form className="sm:pt-6 pt-2 sm:pb-8 pb-0 sm:mb-4 mb-2">
-							    <div className="sm:mb-4 mb-2">
-							      <input className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Email" />
-							    </div>
-							    <div className="sm:mb-6 mb-2">
-							      <input className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="PhoneNumber" />
-							    </div>
-							    <div className="flex items-center justify-between">
-							      <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="button">
-							        Submit
-							      </button>
-							    </div>
-							  </form>
-							</div>
+
+							{/* form */}
+							<Form/>
+							{/*  */}
+
 						</div>
 						<div>
 						</div>
 					</div>
-					<p className="font-sans text-sm">success message like we will get in touch with you as soon as possible</p>
 				</div>
 				<div className="md:w-6/12 sm:w-12/12 pt-36 sm:pt-60 md:pt-0">
 					<img src='/background.png' />
