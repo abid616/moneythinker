@@ -5,6 +5,7 @@ const {parseMultipartData, sanitizeEntity} = require('strapi-utils')
 module.exports = {
 
     async create(ctx){
+console.log(ctx)
         let entity;
         if(ctx.is('multipart')){
             const {data, files} = parseMultipartData(ctx);

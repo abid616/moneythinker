@@ -16,7 +16,7 @@ export const Form = () => {
             discription: discription
         }
 
-        const add = await fetch(fetchAPI("/requests"),{
+        const add = await fetch("/requests" ,{
             method:"POST",
             body: JSON.stringify(requestInfo)
         })

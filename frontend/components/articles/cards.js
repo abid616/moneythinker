@@ -5,6 +5,13 @@ import {smartTrim} from "../../lib/blog"
 import Moment from "react-moment";
 
 export const HeroCard = ({article}) => {
+    let published_at = new Date(article.published_at);
+    let current = new Date();
+    let hour = Math.ceil((current - published_at)/3600000);
+    let day = Math.ceil(hour/24);
+    let month = Math.ceil(day/30);
+    let year = Math.ceil(day/365);
+    let display = 0;
     return (
         <Link as={`/article/${article.slug}`} href="/article/[id]">
             <a>
@@ -20,7 +27,12 @@ export const HeroCard = ({article}) => {
                         {/*<p className="text-sm h-0 sm:h-16 overflow-hidden">{article.description}</p>*/}
                         <div className="flex flex-col sm:flex-row justify-between mt-1 sm:mt-2 items-center">
                             <h2 className="text-sm md:text-lg font-semibold">By {article.author.name}</h2>
-                            <p className="text-sm md:text-lg sm:mt-0 mt-1"><Moment format="MMM Do YYYY">{article.published_at}</Moment></p>
+                            <p className="text-sm md:text-lg sm:mt-0 mt-1">{
+                                hour < 24 ? `${hour} h ago` : 
+                                    day < 30 ?  `${day} day ago` :
+                                        month < 12 ? `${month} month ago`:
+                                            `${year} year ago`
+                            }</p>
 
                         </div>
                     </div>
