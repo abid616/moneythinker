@@ -1,15 +1,16 @@
-import ReactMarkdown from "react-markdown";
+import React, { useState, useEffect } from 'react';
 import Moment from "react-moment";
 import { BsTwitter, BsFacebook, BsYoutube } from "react-icons/bs";
-
+import MarkdownIt from "markdown-It"
 import { fetchAPI } from "../../lib/api";
 import Container from "../../components/container";
 import Images from "../../components/image";
 import Seo from "../../components/seo";
 import { getStrapiMedia } from "../../lib/api";
-import History from "./history.js";
+import { AddCard, HeroCard, HistoryCard, TagButton } from "../../components/articles/cards";
 
 const Article = ({ article, categories }) => {
+  
   const seo = {
     metaTitle: article.title,
     metaDescription: article.description,
@@ -17,6 +18,33 @@ const Article = ({ article, categories }) => {
     article: true,
   };
 
+  const md = new MarkdownIt();
+  const htmlContent = md.render(article.content);
+
+  // const [related, setRelated] = useState([]);
+  // const loadRelated = () => {
+  //   fetchAPI(article).then(data => {
+  //     if (data.error) {
+  //       console.log(data.error);
+  //     } else {
+  //       setRelated(data);
+  //     }
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   loadRelated();
+  // }, []);
+
+  // const showRelatedBlog = () => {
+  //   return related.map((blog, i) => (
+  //     <div className="col-md-4" key={i}>
+  //       <article>
+  //         <HeroCard blog={blog} />
+  //       </article>
+  //     </div>
+  //   ));
+  // };
   return (
     <Container categories={categories}>
       <Seo seo={seo} />
@@ -64,49 +92,27 @@ const Article = ({ article, categories }) => {
 
           <div>
             <div className="mt-4">
-              <Images image={article.image} width={1080} height={810} />
+              <Images image={article.image} width={1080} height={510} />
             </div>
             <p className="mt-4 text-center text-gray-400">{article.description}</p>
           </div>
-          <p className="mt-2 font-semibold">{article.content}</p>
+          <section className="mt-2 font-normal"> 
+            <span dangerouslySetInnerHTML={{ __html: htmlContent }} />
+          </section>
 
           <div className="mt-8 inline-flex flex-col">
-            <div className="mt-8 inline-flex p-4 items-center w-auto border-2">
-              <img className="mx-4" src="/product.png" />
-              <img className="mx-4" src="/amazon.png" />
-              <p className="mx-4">£200</p>
-              <p className="bg-green-600 h-10 mx-4 w-24 py-1 px-2 cursor-pointer border-2 rounded-full">View now</p>
-            </div>
-            <div className="mt-8 inline-flex p-4 items-center w-auto border-2">
-              <img className="mx-4" src="/product.png" />
-              <img className="mx-4" src="/amazon.png" />
-              <p className="mx-4">£200</p>
-              <p className="bg-green-600 h-10 mx-4 w-24 py-1 px-2 cursor-pointer border-2 rounded-full">View now</p>
-            </div>
-            <div className="mt-8 inline-flex p-4 items-center w-auto border-2">
-              <img className="mx-4" src="/product.png" />
-              <img className="mx-4" src="/amazon.png" />
-              <p className="mx-4">£200</p>
-              <p className="bg-green-600 h-10 mx-4 w-24 py-1 px-2 cursor-pointer border-2 rounded-full">View now</p>
-            </div>
+           {/* <AddCard/> */}
           </div>
 
           <p className="mt-4 text-2xl">Releated Topics</p>
           <div className="mt-4 inline-flex">
-            <div className="mr-4 inline-flex p-2 items-center w-auto border-2">
-              <p className="mx-4 px-2">Tags</p>
-            </div>
-            <div className="mr-4 inline-flex p-2 items-center w-auto border-2">
-              <p className="mx-4 px-2">Tags</p>
-            </div>
-            <div className="mr-4 inline-flex p-2 items-center w-auto border-2">
-              <p className="mx-4 px-2">Tags</p>
-            </div>
+            <TagButton article={article} />
           </div>
 
           <p className="mt-4 text-2xl">More on this story</p>
           <div className="mt-4 inline-flex flex-col">
-            <History article={article} />
+            {/* {showRelatedBlog()} */}
+            <HistoryCard article={article}/>
           </div>
         </div>
       </div>

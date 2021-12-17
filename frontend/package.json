@@ -13,7 +13,7 @@
     "cloudinary-jquery": "^2.12.0",
     "cloudinary-react": "^1.7.0",
     "daisyui": "^1.16.2",
-    "markdown-it": "^12.2.0",
+    "markdown-it": "^12.3.0",
     "moment": "^2.29.1",
     "next": "latest",
     "react": "^17.0.2",

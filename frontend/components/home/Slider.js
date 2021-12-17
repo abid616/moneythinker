@@ -5,7 +5,7 @@ import {SlideItem} from './SlideItem';
 
 const Slider = ({articles}) => {
 	return (
-		<Carousel 
+		<Carousel autoPlay
 			showThumbs={false}
 		>
 			{
