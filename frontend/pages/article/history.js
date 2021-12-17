@@ -4,7 +4,6 @@ import Images from "../../components/image";
 import Moment from "react-moment";
 
 const History = ({ article }) => {
-console.log(article)
     return(
     	<div className="mt-8 inline-flex p-4 items-center w-auto border-2">
     		<div className="flex flex-col">

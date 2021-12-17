@@ -3,8 +3,9 @@ import Posts from "../../components/articles/posts"
 import {fetchAPI} from "../../lib/api"
 import Container from '../../components/container'
 import Seo from "../../components/seo"
-
+import Images from "../../components/image"
 const Category = ({ category, categories }) => {
+    console.log(category)
     const seo = {
         metaTitle: category.name,
         metaDescription: `All ${category.name} posts`,
@@ -16,6 +17,7 @@ const Category = ({ category, categories }) => {
             <div className="">
                 <div className="">
                     <h1>{category.name}</h1>
+                    
                     <Posts articles={category.articles} />
                 </div>
             </div>
@@ -46,4 +48,4 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default Category;
+export default Category; 
