@@ -7,7 +7,7 @@ import {Posts} from '../components/articles/posts'
 import Hero from '../components/home/hero'
 import Trending from '../components/home/trending'
 
-const Home = ({ articles, categories, homepage, tags}) => {
+const Home = ({ articles, categories, homepage, tags, writers}) => {
   return (
     <Container categories={categories}>
       <Seo seo={homepage.seo}/>
@@ -16,7 +16,7 @@ const Home = ({ articles, categories, homepage, tags}) => {
       {
         categories.filter(ca => ca.name !== 'Consparacy').map((item, i) => (
           item.articles.length > 0 ? (
-            <Posts key={i} title={item.name} articles={articles.filter(ar => ar.category.id === item.id)}/>
+            <Posts key={i} title={item.name} articles={articles.filter(ar => ar.category.id === item.id)} tags={tags}/>
           ) : null
         ))
       }
@@ -32,6 +32,7 @@ export async function getStaticProps() {
     fetchAPI("/tags"),
     fetchAPI("/requests"),
     fetchAPI("/homepage"),
+    fetchAPI("/writers")
   ]);
 
   return {

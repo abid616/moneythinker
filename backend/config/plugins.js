@@ -7,4 +7,15 @@ module.exports = ({ env }) => ({
             api_secret: env("CLOUDINARY_SECRET"),
         },
     },
+
+    email: {
+        provider: 'sendgrid',
+        providerOptions: {
+            apiKey: env('SENDGRID_API_KEY'),
+        },
+        settings: {
+            defaultFrom: 'abid.hasan@moneythinker.co.uk',
+            defaultReplyTo: 'abid.hasan@moneythinker.co.uk',
+        },
+    },
 });

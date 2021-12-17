@@ -1,39 +1,37 @@
 {
   "kind": "collectionType",
-  "collectionName": "writers",
+  "collectionName": "abouts",
   "info": {
-    "name": "author",
+    "name": "About",
     "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string"
     },
-    "picture": {
-      "model": "file",
+    "discription": {
+      "type": "richtext"
+    },
+    "image": {
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
-        "images"
+        "images",
+        "files",
+        "videos"
       ],
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
     },
-    "articles": {
-      "via": "author",
-      "collection": "article"
-    },
-    "email": {
-      "type": "string"
-    },
-    "discription": {
-      "type": "richtext"
+    "Email": {
+      "type": "email"
     }
   }
 }
