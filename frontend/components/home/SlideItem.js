@@ -16,7 +16,7 @@ export const SlideItem = ({article, num}) => {
             <div>
                 <Images image={article.image} width={800} height={250} className="rounded-lg trending-image"/>
             </div>
-            <p className="font-sans text-white text-xl md:mt-2 sm:mt-1  sm:h-8 overflow-hidden">{article.description}</p>
+            <p className="font-sans text-white text-xl md:mt-2 sm:mt-1  sm:h-8 h-20 overflow-hidden">{article.description}</p>
 
             <div className="w-full flex justify-between mt-2">
                 <h2 className="text-xm sm:text-sm font-normal hover:underline cursor-pointer ">By {article.author.name}</h2>

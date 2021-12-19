@@ -38,19 +38,20 @@ export const HeroCard = ({article}) => {
                         </a>
                     </Link>
 
-                    <span className="text-xm sm:text-sm sm:mt-0 mt-1 
-                    text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200
-                    ">{
-                        hour < 24 ? `${hour} h ago` : 
-                            day < 30 ?  `${day} day ago` :
-                                month < 12 ? `${month} month ago`:
-                                    `${year} year ago`
-                    }</span>
+                    <div className="flex flex-row justify-between items-center">
+                        <span className="text-xm sm:text-sm sm:mt-0 mt-1 
+                        text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 sm:border-r-2 border-gray-200
+                        ">{
+                            hour < 24 ? `${hour} h ago` : 
+                                day < 30 ?  `${day} day ago` :
+                                    month < 12 ? `${month} month ago`:
+                                        `${year} year ago`
+                        }</span>
 
-                    <span className="text-gray-400 inline-flex items-center leading-none text-sm">
-                        <BsShare/>
-                    </span>
-
+                        <span className="text-gray-400 inline-flex items-center leading-none text-sm">
+                            <BsShare/>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@ const Hero = ({}) => {
 						</div>
 					</div>
 				</div>
-				<div className="md:w-6/12 sm:w-12/12 pt-36 sm:pt-60 md:pt-0">
+				<div className="md:w-6/12 sm:w-12/12 pt-64 md:pt-0">
 					<img src='/background.png' />
 				</div>
 			</div>
