@@ -1,11 +1,11 @@
 import React from 'react'
-import Posts from "../../components/articles/posts"
+import Posts from "../../components/category/posts"
 import {fetchAPI} from "../../lib/api"
 import Container from '../../components/container'
 import Seo from "../../components/seo"
 import Images from "../../components/image"
-const Category = ({ category, categories }) => {
-    console.log(category)
+
+const Category = ({ category, categories, articles }) => {
     const seo = {
         metaTitle: category.name,
         metaDescription: `All ${category.name} posts`,
@@ -16,9 +16,9 @@ const Category = ({ category, categories }) => {
             <Seo seo={seo} />
             <div className="">
                 <div className="">
-                    <h1>{category.name}</h1>
-                    
-                    <Posts articles={category.articles} />
+                    <h1 className="text-2xl">{category.name}</h1>
+
+                    <Posts articles={articles.filter(ar => ar.category.id === category.id)} />
                 </div>
             </div>
         </Container>
@@ -41,9 +41,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const category = (await fetchAPI(`/categories?slug=${params.slug}`))[0]
     const categories = await fetchAPI("/categories")
+    const articles = await fetchAPI("/articles")
 
     return {
-        props: { category, categories },
+        props: { category, categories, articles },
         revalidate: 1,
     }
 }

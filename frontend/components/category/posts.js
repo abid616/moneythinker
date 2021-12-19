@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {HeroCard} from './cards'
+import {CategoryCard} from './card'
 import { v1 as uuidv1 } from 'uuid';
 
 export const Posts = ({ title, articles}) => {
@@ -12,10 +12,10 @@ export const Posts = ({ title, articles}) => {
         <div className='mt-8'>
             <div>
                 <div className="card-title sm:p-0 px-2 capitalize">{title}</div>
-                <div className="grid sm:grid-cols-4 grid-cols-2 gap-4 sm:gap-8 sm:px-0 px-2">
+                <div className="sm:px-10 px-2">
                     {latestPosts.map((article) => {
                         return (
-                            <HeroCard article={article} key={`article__${article.slug}`} />
+                            <CategoryCard article={article} key={`article__${article.slug}`} />
                         );
                     })}
                 </div>

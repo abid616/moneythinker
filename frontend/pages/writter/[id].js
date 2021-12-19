@@ -4,19 +4,19 @@ import { fetchAPI } from "../../lib/api"
 import Container from '../../components/container'
 import Seo from "../../components/seo"
 
-const Writers = ({ writer, writers }) => {
+const Writers = ({ writer, writers, categories, articles }) => {
     const seo = {
         metaTitle: writer.name,
         metaDescription: `All ${writer.name} posts`,
     };
 
     return (
-        <Container writers={writers}>
+        <Container writers={writers} categories={categories}>
             <Seo seo={seo} />
             <div className="">
                 <div className="">
                     <h1>{writer.name}</h1>
-                    <Posts articles={writer.articles} />
+                    <Posts articles={articles.filter(ar => ar.author.id === writer.id)} />
                 </div>
             </div>
         </Container>
@@ -25,11 +25,10 @@ const Writers = ({ writer, writers }) => {
 
 export async function getStaticPaths() {
     const writers = await fetchAPI("/writers");
-
     return {
         paths: writers.map((writer) => ({
             params: {
-                slug: writer.slug,
+                id: writer.id,
             },
         })),
         fallback: false,
@@ -37,11 +36,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const writer = (await fetchAPI(`/writers?slug=${params.slug}`))[0]
+    const writer = (await fetchAPI(`/writers?id=${params.id}`))[0]
     const writers = await fetchAPI("/writers")
+    const categories = await fetchAPI("/categories")
+    const articles = await fetchAPI("/articles")
 
     return {
-        props: { writer, writers },
+        props: { writer, writers, categories, articles },
         revalidate: 1,
     }
 }

@@ -16,7 +16,19 @@ const Home = ({ articles, categories, homepage, tags, writers}) => {
       {
         categories.filter(ca => ca.name !== 'Consparacy').map((item, i) => (
           item.articles.length > 0 ? (
-            <Posts key={i} title={item.name} articles={articles.filter(ar => ar.category.id === item.id)} tags={tags}/>
+            <Posts
+              key={i}
+              title={item.name}
+              articles={() => {
+                let temp = articles.filter(ar => ar.category.id === item.id)
+                if(temp.length > 4) {
+                  return temp.slice(0, 4)
+                } else {
+                  return temp
+                }
+              }}
+              tags={tags}
+            />
           ) : null
         ))
       }
