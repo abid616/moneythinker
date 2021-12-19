@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Moment from "react-moment";
-import { BsTwitter, BsFacebook, BsYoutube } from "react-icons/bs";
 import MarkdownIt from "markdown-It"
 import { fetchAPI } from "../../lib/api";
 import Container from "../../components/container";
@@ -9,6 +8,7 @@ import Seo from "../../components/seo";
 import { getStrapiMedia } from "../../lib/api";
 import { AddCard, HeroCard, HistoryCard, TagButton } from "../../components/articles/cards";
 import Link from "next/link"
+import { BsTwitter, BsFacebook, BsYoutube } from "react-icons/bs";
 
 const Article = ({ article, articles, categories }) => {
   
@@ -51,6 +51,7 @@ const Article = ({ article, articles, categories }) => {
   //     </div>
   //   ));
   // };
+console.log(article.author)
   return (
     <Container categories={categories}>
       <Seo seo={seo} />
@@ -60,14 +61,20 @@ const Article = ({ article, articles, categories }) => {
         </div>*/}
         <div className="w-12/12">
           <h1 className="font-extrabold text-4xl">{article.title}</h1>
+          <div className="flex justify-start mt-4 items-center">
+            <p><Moment format="MMMM Do YYYY, h:mm:ss a">{article.published_at}</Moment></p>
+            <span className="mx-2 ml-4"><BsTwitter /></span>
+            <span className="mx-2"><BsFacebook /></span>
+            <span className="mx-2"><BsYoutube /></span>
+          </div>
           <div className="mt-4">
-            <div className="flex flex-row md:flex-col items-center">
-              <div>
+            <div className="flex flex-row items-center">
+              <div className="mr-4">
                 {article.author.picture && (
                   <Images
                     image={article.author.picture}
-                    width={300}
-                    height={300}
+                    width={150}
+                    height={150}
                     className="rounded-full"
                     style={{
                       position: "static",
@@ -78,29 +85,18 @@ const Article = ({ article, articles, categories }) => {
               </div>
               <div className="ml-4 md:ml-0">
                 <p className="font-extrabold">By {article.author.name}</p>
-                <p>{article.title}</p>
-                <Link as={`/writter/${article.author.id}`} href="/writter/[id]">
-                  <a>
-                    <div>
-                      <p className="bg-green-600 w-16 py-1 px-2 cursor-pointer border-2 rounded-full">Follow</p>
-                    </div>
-                  </a>
-                </Link>
-                
-                {/*<p>
-                    <Moment format="MMM Do YYYY">{article.published_at}</Moment>
-                </p>*/}
+                <div className="flex flex-row items-center">
+                  <p className="text-ellipsis overflow-hidden whitespace-nowrap w-40 mr-10">{article.author.discription}</p>
+                  <Link as={`/writter/${article.author.id}`} href="/writter/[id]">
+                    <a>
+                      <div>
+                        <p className="bg-green-600 w-16 py-1 px-2 cursor-pointer border-2 rounded-full">Follow</p>
+                      </div>
+                    </a>
+                  </Link>
+                </div>
               </div>
-              {/*<div>
-                  <ReactMarkdown source={article.content} escapeHtml={false} />                    
-              </div>*/}
             </div>
-          </div>
-          <div className="flex justify-start mt-4 items-center">
-            <p><Moment format="MMMM Do YYYY, h:mm:ss a">{article.published_at}</Moment></p>
-            <span className="mx-2 ml-4"><BsTwitter /></span>
-            <span className="mx-2"><BsFacebook /></span>
-            <span className="mx-2"><BsYoutube /></span>
           </div>
 
           <div>
