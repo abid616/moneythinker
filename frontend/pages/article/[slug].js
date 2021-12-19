@@ -51,7 +51,7 @@ const Article = ({ article, articles, categories }) => {
   //     </div>
   //   ));
   // };
-console.log(article.author)
+console.log(morestory)
   return (
     <Container categories={categories}>
       <Seo seo={seo} />

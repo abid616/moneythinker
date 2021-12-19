@@ -86,7 +86,7 @@ export const HistoryCard = ({ article})=>{
                     }
                 </div>
             </div>
-            <Images image={article.image} width={200} height={200} />
+            {article.image && <Images image={article.image} width={200} height={200} />}
         </div>
     )
 }
